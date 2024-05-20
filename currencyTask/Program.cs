@@ -16,7 +16,7 @@ namespace currencyTask
             string specificCurrency;
             Console.WriteLine("Do you want to see all currencies and their rate for AZN?(if you want type \"show-recent-currency-rates\")");
             Console.WriteLine("Do you want to see specific currency and its rate for AZN?(if you want type \"find-currency-rate-by-code\")");
-            Console.WriteLine("Do you want to convert your currency to AZN?(if you want type \"calculate-amount-by-currency\")");
+            Console.WriteLine("Do you want to convert AZN to specific currency(if you want type \"calculate-amount-by-currency\")");
             while (env == true)
             {
                 string answer = Console.ReadLine();
@@ -55,8 +55,8 @@ namespace currencyTask
                 }
                 else if (answer == "calculate-amount-by-currency")
                 {
-                    Console.WriteLine("Type amount and alpha code of your currency one by one: ");
-                    Console.Write("Amount: ");
+                    Console.WriteLine("Type amount of AZN and alpha code of your currency one by one: ");
+                    Console.Write("Amount of AZN: ");
                     conversionAmount = decimal.Parse(Console.ReadLine());
                     Console.WriteLine("Alpha code: ");
                     specificCurrency = Console.ReadLine();
@@ -66,7 +66,7 @@ namespace currencyTask
                         {
                             ent = true;
                             specificIdx = idx;
-                            conversionTotal = rates[specificIdx] * conversionAmount;
+                            conversionTotal = conversionAmount / rates[specificIdx];
                             break;
                         }
                         idx++;
@@ -74,7 +74,7 @@ namespace currencyTask
                     if (ent == false)
                         Console.WriteLine("Your alpha code which you wrote wasnt found in database");
                     else
-                        Console.WriteLine($"{currencies[specificIdx]}: {conversionTotal}");
+                        Console.WriteLine($"{conversionAmount} AZN : {conversionTotal} {currencies[specificIdx]}");
                     Console.WriteLine("if you want to exit type \"exit\"");
                     idx = 0;
                 }
