@@ -49,7 +49,10 @@ namespace currencyTask
                         Console.WriteLine("Your alpha code which you wrote wasnt found in database");
                     }
                     else
+                    {
                         Console.WriteLine($"{currencies[specificIdx]}: {rates[specificIdx]}");
+                        ent = false;
+                    }
                     idx = 0;
                     Console.WriteLine("if you want to exit type \"exit\"");
                 }
